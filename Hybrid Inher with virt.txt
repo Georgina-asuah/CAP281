@@ -1,0 +1,89 @@
+
+//HYBRID WITH VIRTUAL
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+class A
+{
+public:
+    int x;
+    void get()
+    {
+        cout<<"enter x value:"<<endl;
+        cin>>x;
+    }
+    void show()
+    {
+        cout<<"x = "<<x<<endl;
+    }
+};
+
+class B: public virtual A
+{
+public:
+    int y;
+    void get()
+    {
+         A::get();
+        cout<<"Enter the value of y"<<endl;
+        cin>>y;
+    }
+    void show()
+    {
+        cout<<" y = "<<y<<endl;
+        cout<<"x+y = "<<x+y<<endl;
+        A::show();
+    }
+};
+
+class C:public virtual A
+{
+public:
+    int z;
+    void get()
+    {
+        //A::get();
+        cout<<"Enter the value of z "<<endl;
+        cin>>z;
+    }
+    void show()
+    {
+        //A::show();
+        cout<<" z = "<<z<<endl;
+        cout<<"x+z = " <<x+z<<endl;
+    }
+
+};
+
+class D:virtual public B,public C
+{
+public:
+    int p;
+    void get()
+    {
+        B::get();
+        C::get();
+        cout<<"Enter the value of p"<<endl;
+        cin>>p;
+    }
+    void show()
+    {
+        B::show();
+        C::show();
+        cout<<" p = "<<p<<endl;
+        cout<<"x+y+z+p " <<x+y+z+p<<endl;
+    }
+};
+
+int main()
+{
+    D d1;
+    cout<<endl<<"Enter Data"<<endl;
+    d1.get();
+    cout<<endl<<endl<<"Display Result"<<endl;
+    d1.show();
+    getch();
+    return 0;
+}
