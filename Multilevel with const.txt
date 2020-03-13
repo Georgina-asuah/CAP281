@@ -1,0 +1,60 @@
+// multilevel Inheritance using constructor
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+class A
+{
+   int r;
+   public:
+       A(int a)
+       {
+           r=a;
+       }
+       float area_cir()
+       {
+           return(3.14*r*r);
+       }
+};
+
+class B:public A
+{
+    int m,n;
+public:
+    B(int x,int y):A(x)
+    {
+        m=x;
+        n=y;
+    }
+    float area_rect()
+    {
+        return(m*n);
+    }
+};
+
+class C:public B
+{
+    int l,b;
+public:
+    C(int p,int q):B(p,q)
+    {
+        l=p;
+        b=q;
+    }
+    float area_tri()
+    {
+        return(0.5*l*b);
+    }
+};
+
+int main()
+{
+    int a,b;
+    cout<<"Enter the length and breath:"<<endl;
+    cin>>a>>b;
+    C obj(a,b);
+    cout<<endl<<"Area of circle with radius" <<a<<" = " <<obj.area_cir()<<endl;
+    cout<<endl<<"Area of rectangle with length  "<< a <<"and breath  "<< b <<" = "<<obj.area_rect()<<endl;
+    cout<<endl<<"Area of triangle with length  "<< a <<"and breath  "<<b<<" = "<<obj.area_tri()<<endl;
+    return 0;
+}
