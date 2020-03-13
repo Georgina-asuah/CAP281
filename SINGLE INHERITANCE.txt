@@ -1,0 +1,78 @@
+
+
+//SINGLE INHERITANCE 
+#include <iostream>
+#include<conio.h>
+using namespace std;
+
+class personal
+{
+	char fn[30],ln[30],sex[10];
+	int age;
+	public:
+		void get();
+		void disp();
+};
+
+void personal::get()
+{
+	cout<<"Enter first name:";
+	fflush(stdin);
+	gets(fn);
+	cout<<"Enter last name:";
+	fflush(stdin);
+	gets(ln);
+	cout<<"Gender:";
+	cin>>sex;
+	cout<<"Your age:";
+	cin>>age;
+}
+
+void personal::disp()
+{
+	cout<<"First Name:\t"<<fn<<endl;
+	cout<<"Last Name:\t"<<ln<<endl;
+	cout<<"Gender:\t"<<sex<<endl;
+	cout<<"Age:\t"<<age<<endl;
+}
+
+class academics:public personal
+{
+	char col_n[50],dept[50],level[20];
+	float cgpa;
+	public:
+		void get();
+		void disp();
+};
+
+void academics::get()
+{
+	personal::get();
+	cout<<"Name of College:";
+	cin>>col_n;
+	cout<<"Department:";
+	cin>>dept;
+	cout<<"Level:";
+	cin>>level;
+	cout<<"Your Current CGPA:";
+	cin>>cgpa;
+}
+
+void academics::disp()
+{
+	personal::disp();
+	cout<<"College:\t"<<col_n<<endl;
+	cout<<"Department:\t"<<dept<<endl;
+	cout<<"Level:\t"<<level<<endl;
+	cout<<"CGPA:\t"<<cgpa<<endl;
+}
+
+int main()
+ {
+ 	academics c;
+ 	cout<<"\t\t\t\t\tINPUT YOUR DATA"<<endl;
+ 	c.get();
+ 	cout<< "\n\n\n\t\t\t\t\tDISPLAY THE INFORMATION"<<endl;
+ 	c.disp();
+	return 0;
+}
