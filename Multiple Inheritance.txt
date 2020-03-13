@@ -1,0 +1,51 @@
+
+
+// Multiple Inheritance  					
+#include <iostream>
+
+using namespace std;
+
+class Area
+{
+	public:
+		int getA(int l,int b)
+		{
+			return (l * b);
+		}
+};
+
+class Perimeter
+{
+	public:
+		int getP(int l, int b)
+		{
+			return 2*(l + b);
+		}
+};
+
+class Rectangle : public Area, public Perimeter
+{
+	int l,b;
+	public:
+		Rectangle()
+		{
+			cout<<"Enter the length and breadth of the rectangle:";
+			cin>>l>>b;
+		}
+		int area()
+		{
+			return Area::getA(l, b);
+		}
+		int per()
+		{
+			return Perimeter::getP(l, b);
+		}
+};
+
+int main()
+{
+	Rectangle rt;
+	cout <<endl<< "Area of the rectangle is : " << rt.area() << endl;
+	cout <<endl<< "Perimeter of the rectangle is : " << rt.per() << endl;
+	return 0;
+}
