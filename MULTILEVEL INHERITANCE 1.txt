@@ -1,0 +1,102 @@
+
+
+// MULTILEVEL INHERITANCE 1
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+class personal
+{
+    char name[100],gender[10];
+    int age;
+    public:
+        void get();
+        void disp();
+};
+
+void personal::get()
+    {
+        cout<<"Enter Full Name: ";
+        fflush(stdin);  //clears input stream
+        gets(name);
+        cout<<"Age: ";
+        cin>>age;
+        cout<<"Gender: ";
+        cin>>gender;
+    }
+void personal::disp()
+    {
+        cout<<"Name: "<<name<<endl;
+        cout<<"Age: "<<age<<endl;
+        cout<<"Gender: "<<gender<<endl;
+    }
+
+
+class student: public personal
+{
+    char col_name[100],dept[50],level[10];
+    float cgpa;
+    public:
+        void get();
+        void disp();
+};
+
+void student::get() 
+    {
+        personal::get();
+        cout<<"Name of college: ";
+        fflush(stdin);
+        gets(col_name);
+        cout<<"Name of Department: ";
+        fflush(stdin);
+        gets(dept);
+        cout<<"Level: ";
+        cin>>level;
+        cout<<"CGPA: ";
+        cin>>cgpa;
+    }
+void student::disp()
+    {
+        personal::disp();
+        cout<<"College: "<<col_name<<endl;
+        cout<<"Department: "<<dept<<endl;
+        cout<<"Level: "<<level<<endl;
+        cout<<"CGPA: "<<cgpa<<endl;
+    }
+
+class course: public student
+{
+    char prog[100];
+	int num;
+    public:
+        void get();
+        void disp();
+};
+
+
+void course::get()
+        {
+            student::get();
+            cout<<"Your program of study: ";
+            fflush(stdin);
+            gets(prog);
+            cout<<"Number of courses studying: ";
+            cin>>num;
+        }
+        void course::disp()
+        {
+            student::disp();
+            cout<<"Program of study: "<<prog<<endl;
+            cout<<"Number of courses: "<<num<<endl;
+        }
+
+int main()
+{
+    course c;
+    cout<<"Enter data"<<endl;
+    c.get();
+    cout<<endl<<"Displaying data"<<endl;
+    c.disp();
+    getch();
+    return 0;
+}
