@@ -1,0 +1,46 @@
+
+
+// Multiple inheritance 2						
+#include<iostream>
+using namespace std;
+
+class A
+{
+ 	public:
+ 	int x;
+ 	void get()
+    {
+ 	    cout << "enter value of x: "; 
+		cin >> x;
+    }
+};
+
+class B
+{
+public:
+ 	int y;
+ 	void get()
+ 	{
+ 	    cout << "enter value of y: "; 
+		cin >> y;
+ 	}
+};
+
+class C : public A, public B   //C is derived from class A and class B
+{
+ 	public:
+ 	void disp()
+ 	{
+ 	    cout <<endl<< "Sum = " << x + y<<endl;;
+ 	    cout<<endl<<"product = "<<x * y<<endl;
+ 	}
+};
+
+int main()
+{
+ 	 C c1; //object of derived class C
+ 	 c1.A::get();
+ 	 c1.B::get();
+ 	 c1.disp();
+ 	 return 0;
+}
