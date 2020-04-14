@@ -1,0 +1,41 @@
+CA2
+
+GOERGINA ASUAH
+11919709
+Q2. Explain the concept of ambiguity with suitable example.
+
+//CONCEPT OF AMBIGUITY RESOLUTION 
+#include<iostream>
+using namespace std;
+
+class A
+{
+	public:
+		void show()
+		{
+			cout<<"Class A Method"<<endl;
+		}
+};
+
+class B
+{
+	public:
+		void show()
+		{
+			cout<<"Class B Method"<<endl;
+		}
+};
+
+class C:public A,public B
+{
+	
+};
+
+int main()
+{
+	C obj;
+//	obj.show();     //This call causes ambiguity
+	obj.A::show();
+	obj.B::show();
+	return 0;
+}
