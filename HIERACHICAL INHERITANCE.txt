@@ -1,0 +1,104 @@
+//HIERACHICAL INHERITANCE  1       					
+
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+class general
+{
+    char name[100],gender[10];
+    int age,ph_no,ID;
+    public:
+        void input()
+        {
+            cout<<"Name: ";
+            fflush(stdin);  //clears input stream
+            gets(name);
+            cout<<"ID number:";
+            cin>>ID;
+            cout<<"Age: ";
+            cin>>age;
+            cout<<"Gender: ";
+            cin>>gender;
+            cout<<"Phone number";
+            cin>>ph_no;
+        }
+        void output()
+        {
+            cout<<"Name: "<<name<<endl;
+            cout<<"ID:  "<<ID<<endl;
+            cout<<"Age: "<<age<<endl;
+            cout<<"Gender: "<<gender<<endl;
+            cout<<"Phone Number:  "<<ph_no<<endl;
+        }
+};
+
+class student: public general
+{
+    char institute[100],dept[50], level[20];
+    float cgpa;
+    public:
+        void input()
+        {
+            general::input();
+            cout<<"Name of College/School: ";
+            fflush(stdin);
+            gets(institute);
+            cout<<"Name of Department: ";
+            fflush(stdin);
+            gets(dept);
+            cout<<"Level: ";
+            cin>>level;
+            cout<<"CGPA";
+            cin>>cgpa;
+        }
+        void output()
+        {
+            general::output();
+            cout<<"Name of College/School: "<<institute<<endl;
+            cout<<"Department:  "<<dept<<endl;
+            cout<<"Level: "<<level<<endl;
+            cout<<"CGPA : "<<cgpa<<endl;
+        }
+};
+
+class employee: public general
+{
+    char company[100];
+    float salary;
+    public:
+        void input()
+        {
+            general::input();
+            cout<<"Name of Company: ";
+            fflush(stdin);
+            gets(company);
+            cout<<"Salary: Rs.";
+            cin>>salary;
+        }
+        void output()
+        {
+            general::output();
+            cout<<"Name of Company: "<<company<<endl;
+            cout<<"Salary: Rs."<<salary<<endl;
+        }
+};
+
+int main()
+{
+    student s;
+    employee e;
+    cout<<"##################### \tSTUDENT DATA\t #######################"<<endl;
+    cout<<"Enter data"<<endl;
+    s.input();
+    cout<<endl<<endl<<"@@@@@@@@@@@@@@@@\tDISPLAYING STUDENT DETAILS\t@@@@@@@@@@@@@@"<<endl;
+    s.output();
+    cout<<endl<<endl<<"$$$$$$$$$$$$$$$\tEMPLOYEE DATA\t$$$$$$$$$$$$$$$$$$$$$"<<endl;
+    cout<<"Enter data"<<endl;
+    e.input();
+    cout<<endl<<endl<<"%%%%%%%%%%%%%%%\tDISPLAYING EMPLOYEE DETAILS\t%%%%%%%%%%%%%%%%%"<<endl;
+    e.output();
+    getch();
+    return 0;
+}
