@@ -1,0 +1,105 @@
+OOP LAB CA
+
+GEORGINA ASUAH
+11919709
+Q1. IMPLEMENT USER TO USER CONVERSION
+
+//USER TO USER CONVERSION USING CONSTRUCTOR CONVERSION FUNCTION IN THE DESTINATION CLASS
+#include <iostream>
+using namespace std;
+
+class B;
+class A      //Souce class
+{
+	int ID;
+	int n;
+	float p;
+	public:
+		void get()
+		{
+			cout<<"Student ID: ";
+			cin>>ID;
+			cout<<"Number of books of same kind purchased: ";
+			cin>>n;
+			cout<<"Unit Price of book(Rs): ";
+			cin>>p;
+		}
+		void put()
+		{
+			cout<<"ID: "<<ID<<endl;
+			cout<<"Number of books: "<<n<<endl;
+			cout<<"Price: Rs "<<p<<endl;
+		}
+		int calid()
+		{
+			return ID;
+		}
+		int caln()
+		{
+			return n;
+		}
+		float calp()
+		{
+			return p;
+		}
+};
+
+class B          // Destination class
+{
+	int ID;
+	float cost;
+	public:
+		B()
+		{
+			ID = 0;
+			cost = 0;
+		}
+		B(int r,float s)
+		{
+			ID = r;
+			cost = s;
+		}
+		void put()
+		{
+			cout<<"ID: "<<ID<<endl;
+			cout<<"Total Cost: Rs "<<cost<<endl;
+		}
+		
+		B(A p)   // Constructor for conversion
+		{
+			ID = p.calid();
+			cost = p.caln() * p.calp();
+		}
+};
+
+int main()
+{
+	A a1;
+	B b1;
+	a1.get();
+	b1 = a1;    //converting type A class to type B class
+	 
+	cout<<endl<<"Purchase Information: "<<endl;
+	a1.put();
+	
+	cout<<endl<<"Cost Information: "<<endl;
+	b1.put();
+	
+	return 0;
+}
+
+
+
+OUTPUT
+Student ID: 11919709
+Number of books of same kind purchased: 3
+Unit Price of book(Rs): 75
+
+Purchase Information:
+ID: 11919709
+Number of books: 3
+Price: Rs 75
+
+Cost Information:
+ID: 11919709
+Total Cost: Rs 225
