@@ -1,0 +1,52 @@
+OOP LAB CA
+
+GEORGINA ASUAH
+11919709
+Q2. OVERLOAD >=(BINARY) OPERATOR
+
+//OVERLOADING BINARY OPERATOR >= 
+#include<iostream>
+using namespace std;
+
+class Number
+{
+	int n;
+	public:
+		void read()
+		{
+			cin>>n;
+		}
+		int operator >=(Number x)
+		{
+			if(n>=x.n)
+			{
+				cout<<endl<<"n1 is greater than or equal to n2."<<endl;
+				return 1;
+			}
+			else
+			{
+				cout<<endl<<"n1 is less than n2."<<endl;
+				return 0;
+			}
+		}
+};
+
+int main()
+{
+	Number n1,n2;
+	cout<<"Enter value of fisrt object (n1): "<<endl;
+	n1.read();
+	cout<<"Enter value of second object (n2): "<<endl;
+	n2.read();
+        n1>=n2;
+	return 0;
+}
+
+
+OUTPUT
+Enter value of fisrt object (n1):
+45
+Enter value of second object (n2):
+34
+
+n1 is greater than or equal to n2.
