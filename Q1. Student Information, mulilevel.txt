@@ -1,0 +1,129 @@
+
+CA2
+
+GOERGINA ASUAH 
+11919709
+Q1. Write a program to record the information of a student like general, academic and fitness by implementing multilevel inheritance
+ 
+
+//program to record Student Information, implementing multilevel inheritance
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+class general
+{
+    char name[100],gender[10];
+	unsigned long int ph_no;
+    int age,ID;
+    public:
+        void input()
+        {
+        	cout<<"          ENTER YOUR GENERAL INFORMATION          "<<endl<<endl;
+            cout<<"Name: ";
+            fflush(stdin);  //clears input stream
+            gets(name);
+            cout<<"ID number:  ";
+            cin>>ID;
+            cout<<"Age: ";
+            cin>>age;
+            cout<<"Gender: ";
+            cin>>gender;
+            cout<<"Phone number";
+            cin>>ph_no;
+        }
+        void output()
+        {
+        	cout<<endl<<"      GENERAL DETAILS "<<endl<<endl;
+            cout<<"Name:  "<<name<<endl;
+            cout<<"ID:  "<<ID<<endl;
+            cout<<"Age:  "<<age<<endl;
+            cout<<"Gender:  "<<gender<<endl;
+            cout<<"Phone Number:  "<<ph_no<<endl;
+        }
+};
+
+class academic: public general
+{
+    char institute[100],prog[50], year[20];
+    float cgpa;
+    int attend;
+    public:
+        void input()
+        {
+        	general::input();
+        	cout<<endl<<"      ENTER YOUR ACADEMIC INFORMATION "<<endl<<endl;
+            cout<<"Name of College/School: ";
+            fflush(stdin);
+            gets(institute);
+            cout<<"Name of Program: ";
+            fflush(stdin);
+            gets(prog);
+            cout<<"Year: ";
+            fflush(stdin);
+            gets(year);
+            cout<<"CGPA: ";
+            cin>>cgpa;
+            cout<<"Enter attendance in percentage(%): ";
+            cin>>attend;
+        }
+        void output()
+        {
+        	general::output();
+        	cout<<endl<<"      ACADEMIC DETAILS"<<endl<<endl;
+            cout<<"Name of College/School: "<<institute<<endl;
+            cout<<"Program:  "<<prog<<endl;
+            cout<<"Year: "<<year<<endl;
+            cout<<"CGPA : "<<cgpa<<endl;
+            cout<<"Atendance: "<<attend<<"%"<<endl;
+            if(attend>=75)
+             cout<<"Qualified to sit in for examination!";
+            else
+             cout<<"Not Qualified to sit in for examination!";
+        }
+};
+
+class fitness: public academic
+{
+    float w,h,BMI;
+    public:
+        void input()
+        {
+        	academic::input();
+			cout<<endl<<"       ENTER YOUR FITNESS INFORMAYION"<<endl<<endl;
+            cout<<"Enter your weight(kg): ";
+            cin>>w;
+			cout<<"Enter your height(m): ";
+            cin>>h;
+        }
+        void output()
+        {
+        	academic::output();
+        	cout<<endl<<endl<<"      FITNESS DETAILS "<<endl<<endl;
+            cout<<"Your Weight: "<<w<<"kg"<<endl;
+			cout<<"Your Height: "<<h<<"m"<<endl;
+            BMI=w/(h*h);
+            if(BMI<18.5)
+            cout<<"Your Body Mass Index is Below Normal: UNDERWEIGHT";
+            if(BMI>=18.5&&BMI<=24.9)
+            cout<<"Your Body Mass Index is Normal: HEALTHY WEIGHT";
+            if(BMI>24.9&&BMI<=29.9)
+            cout<<"Your Body Mass Index is Above Normal: OVERWEIGHT"; 
+            if(BMI>29.9)
+            cout<<"Your Body Mass Index is Above Normal: OBESE"; 
+            
+        }
+};
+
+int main()
+{
+    fitness f;
+    cout<<"---------------\tINPUT STUDENT INFORMATION\t -----------------\n\n"<<endl;
+    //cout<<"Enter data"<<endl;
+    f.input();
+    cout<<endl<<endl<<"_______________\tDISPLAYING STUDENT DATA\t_______________\n\n"<<endl;
+    f.output();
+    //getch();
+    return 0;
+}
