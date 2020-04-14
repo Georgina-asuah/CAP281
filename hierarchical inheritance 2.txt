@@ -1,0 +1,43 @@
+
+//hierarchial inheritance    				  
+#include <iostream> 
+using namespace std;
+
+class base // base class
+{
+    public:
+ 	int a, b;
+ 	void get()
+ 	{
+   	    cout <<endl<< "Enter value of a and b:\n"; 
+		cin >> a >> b;
+ 	}
+};
+class product : public base //B is derived from class base
+{
+    public:
+ 	void mult()
+ 	{
+ 	    cout <<endl<< "Product= " << a * b;
+ 	}
+};
+class sum : public base //C is also derived from class base
+{
+    public:
+ 	void add()
+ 	{
+        cout <<endl<< "Sum= " << a + b;
+ 	}
+};
+int main()
+{
+    product p;          //object of derived class B
+    sum s;          //object of derived class C
+    cout<<"Enter two numbers to be multiplied."<<endl;
+	p.get();
+    p.mult();
+    cout<<endl<<endl<<"Enter two numbers to be added."<<endl;
+    s.get();
+    s.add();
+    return 0;
+}
