@@ -1,0 +1,199 @@
+CA2
+
+GOERGINA ASUAH
+11919709
+Q4. What are the different types of data conversions that are there in c++? Explain each with suitable example
+
+
+/*
+//TYPES OF DATA CONVERSIONS
+//2. Basic to user defined type conversion
+#include<iostream>
+using namespace std;
+
+class weeks
+{
+	int wks;
+	public:
+		weeks(int d)
+		{
+			wks=d/7;
+		}
+		void disp()
+		{
+			cout<<wks<<" weeks."<<endl;
+		}
+};
+
+int main()
+{
+	weeks w1=35;     //integer to object class weeks
+	w1.disp();
+	return 0;
+}
+
+
+OUTPUT
+5 weeks.
+*/
+
+
+/*
+//3. User to Basic type conversion
+#include<iostream>
+using namespace std;
+
+class circle
+{
+	float area;
+	public:
+		circle()
+		{
+			area=0;
+		}
+		operator float()
+		{
+			float rr;
+			rr=area/3.17;
+			return(rr);
+		}
+		void getarea()
+		{
+			cout<<"Enter the area of the circle:";
+			cin>>area;
+		}
+};
+
+int main()
+{
+	circle c;     //c is user defined type
+	float rr;     //rr is basic data type
+	c.getarea();
+	rr=c;
+	cout<<"Radius By Radius of the circle is: "<<rr<<endl;
+	cout<<"Radius of the circle is: "<<rr/2<<endl;
+	return 0;
+}
+
+OUTPUT
+Enter the area of the circle:30
+Radius By Radius of the circle is: 9.46372
+Radius of the circle is: 4.73186
+*/
+
+
+
+/*
+//4.a. User defined to user defined type conversion.   using casting operator function in source class
+#include<iostream>
+using namespace std;
+
+class hours      //destination class
+{
+	public:
+		int hr;
+		hours()
+		{
+			hr=0;
+		}
+		void display()
+		{
+			cout<<"Hours = "<<hr<<endl;
+		}
+};
+
+class minutes   //source class
+{
+	int min;
+	public:
+		minutes(int m)
+		{
+			min=m;
+		}
+		operator hours()    // casting operator function/conversion function
+		{
+			hours hrs;
+			hrs.hr=min/60;
+			return(hrs);
+		}
+		void display()
+		{
+			cout<<"Minutes = "<<min<<endl;
+		}
+		get()
+		{
+			return min;
+		}
+};
+
+int main()
+{
+	minutes m(600);
+	hours h;
+	h=m;      //converts class minutes to class hours
+	m.display();
+	h.display();
+	return 0;
+}
+
+OUTPUT
+Minutes = 600
+Hours = 10
+*/ 
+
+
+
+/*
+//4.b. User defined to user defined type conversion.   using constructor in destination class
+#include<iostream>
+using namespace std;
+
+class minutes   //source class
+{
+	int min;
+	public:
+		minutes(int m)
+		{
+			min=m;
+		}
+		void display()
+		{
+			cout<<"Minutes = "<<min<<endl;
+		}
+		get()
+		{
+			return min;
+		}
+};
+
+class hours      //destination class
+{
+	int hr;
+	public:
+		hours()
+		{
+			hr=0;
+		}
+		void display()
+		{
+			cout<<"Hours = "<<hr<<endl;
+		}
+		hours(minutes ms)     // conversion constructor
+		{
+			hr=ms.get()/60;
+		}
+};
+
+int main()
+{
+	minutes m(600);
+	hours h;
+	h=m;      //converts class minutes to class hours
+	m.display();
+	h.display();
+	return 0;
+}
+
+OUTPUT
+Minutes = 600
+Hours = 10
