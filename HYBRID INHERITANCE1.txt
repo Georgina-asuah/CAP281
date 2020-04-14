@@ -1,0 +1,56 @@
+//HYBRID INHERITANCE  1 				 
+#include<iostream>
+using namespace std;
+int a,b,c,d,e;
+class X    
+{
+public:
+ void abinput()    
+ {
+ cout<<"\nEnter a and b value:";
+ cin>>a>>b;        
+ }
+};
+ 
+class Y:public X   
+{
+public:
+void cinput()    
+ {
+ cout<<"Enter c value:";
+ cin>>c;    
+ }
+};
+ 
+class Z    
+{
+public:
+ void dinput()    
+ {
+ cout<<"Enter d value:";
+ cin>>d;    
+ }
+};
+ 
+class P:public Y,public Z    
+{
+public:
+ void output()    
+ {
+ abinput();    
+ cinput();
+ dinput();    
+ e=a+b+c+d;
+ cout<<"\n Addition is :"<<e<<endl; 
+ e=(a+b)*(c+d);
+ cout<<endl<<"(a+b)*(c+d)= "<<e<<endl;
+ }
+};
+ 
+int main()    
+{
+ P obj;
+ obj.output();
+ 
+ return 0;
+}
