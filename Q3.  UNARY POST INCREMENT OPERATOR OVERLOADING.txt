@@ -1,0 +1,48 @@
+CA2
+
+GOERGINA ASUAH
+11919709
+Q3. Write a program to overload a unary post increment operator
+
+//OVERLOADING UNARY POST INCREMENT OPERATOR
+#include<iostream>
+using namespace std;
+
+class student
+{
+	int n;
+	public:
+		student()
+		{
+			n=0;
+		}
+		student(int x)
+		{
+			n=x;
+		}
+		void display()
+		{
+			cout<<"Number of students: "<<n<<endl;
+		}
+		void operator ++(int)
+		{
+			n++;
+		}
+};
+
+int main()
+{
+	student s1;
+	s1++;
+	s1.display();
+	
+	s1++;
+	s1.display();
+	return 0;
+	
+}
+
+
+OUTPUT
+Number of students: 1
+Number of students: 2
